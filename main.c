@@ -1,5 +1,4 @@
 #include "src/mcpricer.h"
-#include <time.h>
 
 int main(){
 
