@@ -124,6 +124,8 @@ void matrix_free(Matrix *m){
 // Tests definitions //
 //////////////////////
 
+#ifdef DEBUG
+
 void test_array_init(){
     Array a;
     Array b;
@@ -201,3 +203,5 @@ void test_array_free(){
     assert(a.cap == 0);
 
 }
+
+#endif
