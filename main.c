@@ -11,9 +11,9 @@ int main(){
 
     printf("All tests passed\n");
 
-    return 0;
-
 #endif
+
+    return 0;
 
 }
 
