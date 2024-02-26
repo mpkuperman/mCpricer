@@ -97,6 +97,7 @@ double beasley_springer_moro(double u){
     } 
     else {
         r = u;
+        // TODO: fix this
         if(y > 0){
             r = 1 - u;
         }
