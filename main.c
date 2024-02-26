@@ -3,45 +3,17 @@
 
 int main(){
 
-    // GBM  and Call option
-    Matrix S;
+#ifdef DEBUG
 
-    double M;
-    double N;
-    
-    time_t start;
-    time_t end;
-    
-    double S0 = 1.2;
-    double mu = 1.0;
-    double sg = 1.0;
-    double T  = 1.0;
+    test_array_init();
+    test_array_add();
+    test_array_free();
 
-    int seed = 1234;
-    
-    M = 2;
-    N = 100000;
-
-    matrix_init(&S, N, M);
-
-    start = clock();
-    simulate(&S, S0, mu, sg, T, M, N, seed);
-    
-    double K = 0.9;
-    double c;
-    double p;
-
-    c = call(&S, K);
-    p = put(&S, K);
-
-    end = clock();
-    
-    printf("Call price is: %f \n", c);
-    printf("Put price is: %f \n", p);
-    printf("Time taken: %f seconds", difftime(end, start) / CLOCKS_PER_SEC);
-    
-    matrix_free(&S);
+    printf("All tests passed\n");
 
     return 0;
+
+#endif
+
 }
 
