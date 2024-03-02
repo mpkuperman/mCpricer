@@ -2,12 +2,13 @@
 #include "payoff.h"
 
 double call(Matrix *S, double K){
-    double N   = S->nrows;
+    int N = S->nrows;
+    int M = S->ncols;
     double pay = 0;
 
     double S_last;
     for (size_t i = 0; i < N; i++){
-        S_last = S->data[i + S->ncols * S->ncols];
+        S_last = S(i, M);
         if (S_last - K > 0){
             pay += S_last - K;
         }
@@ -16,12 +17,13 @@ double call(Matrix *S, double K){
 }
 
 double put(Matrix *S, double K){
-    double N   = S->nrows;
+    int N = S->nrows;
+    int M = S->ncols;
     double pay = 0;
 
     double S_last;
     for (size_t i = 0; i < N; i++){
-        S_last = S->data[i + S->ncols * S->ncols];
+        S_last = S(i, M);
         if (K - S_last > 0){
             pay += K - S_last;
         }

@@ -12,10 +12,10 @@ void simulate(Matrix *S, double S0, double mu, double sg, double T, int M, int N
     MersenneTwister r = seedRand(seed);
 
     for (size_t i = 0; i < N; i++){
-        S->data[i * S->ncols] = S0;
+        S(i, 0) = S0;
         for(size_t j = 1; j < M; j++){
             Z = random_normal(&r);
-            S->data[j + i * S->ncols] = S->data[j - 1 + i * S->ncols] * exp(mu_term + sg_term * Z);
+            S(i, j) = S(i, j - 1) * exp(mu_term + sg_term * Z);
         }    
     }
 }
