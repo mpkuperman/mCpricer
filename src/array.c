@@ -87,7 +87,7 @@ void matrix_init(Matrix *m, size_t nrows, size_t ncols){
 }
 
 void matrix_add(Matrix *m, double element){
-    int cap = m->ncols * m->nrows;
+    size_t cap = m->ncols * m->nrows;
     if (m->used == cap) {
         if (cap == 0){
             m->ncols = 1;
@@ -130,8 +130,8 @@ void test_array_init(){
     Array a;
     Array b;
 
-    int N = 10;
-    int M = 10;
+    size_t N = 10;
+    size_t M = 10;
      
     // Non zero size 
     array_init(&a, N);
@@ -156,7 +156,7 @@ void test_array_init(){
 void test_array_add(){
     Array a;
     
-    int N = 2;
+    size_t N = 2;
 
     double value1 = 112.0; 
     double value2 = 120.0; 
@@ -185,7 +185,7 @@ void test_array_add(){
 void test_array_free(){
      Array a;
     
-    int N = 3;
+    size_t N = 3;
 
     double value1 = 112.0; 
     double value2 = 120.0; 

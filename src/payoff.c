@@ -2,8 +2,8 @@
 #include "payoff.h"
 
 double call(Matrix *S, double K){
-    int N = S->nrows;
-    int M = S->ncols;
+    size_t N = S->nrows;
+    size_t M = S->ncols;
     double pay = 0;
 
     double S_last;
@@ -17,8 +17,8 @@ double call(Matrix *S, double K){
 }
 
 double put(Matrix *S, double K){
-    int N = S->nrows;
-    int M = S->ncols;
+    size_t N = S->nrows;
+    size_t M = S->ncols;
     double pay = 0;
 
     double S_last;
