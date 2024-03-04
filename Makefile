@@ -1,7 +1,6 @@
-CC = gcc
-
-CFLAGS = -Wall -Wextra -std=c11
-
+CC = clang
+CFLAGS = -Wall -Wextra
+LDFLAGS = -lm
 DEBUG_FLAGS = -g -DDEBUG
 RELEASE_FLAGS = -O2
 
@@ -21,7 +20,7 @@ release: CFLAGS += $(RELEASE_FLAGS)
 release: clean $(TARGET)
 
 $(TARGET): $(OBJ)
-	$(CC) $(CFLAGS) -o $@ $^
+	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $^
 
 %.o: %.c
 	$(CC) $(CFLAGS) -c -o $@ $<
