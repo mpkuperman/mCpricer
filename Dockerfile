@@ -10,4 +10,4 @@ apt update \
 
 WORKDIR /mCpricer
 
-RUN run_tests.sh
+RUN ./run_tests.sh
