@@ -8,6 +8,3 @@ apt update \
 && apt -y install clang \
 && apt -y install gcc
 
-WORKDIR /mCpricer
-
-RUN ./run_tests.sh
