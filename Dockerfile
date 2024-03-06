@@ -10,5 +10,4 @@ apt update \
 
 WORKDIR /mCpricer
 
-RUN make debug \
-&& ./main
+RUN run_tests.sh
