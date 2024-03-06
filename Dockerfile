@@ -8,8 +8,7 @@ apt update \
 && apt -y install clang \
 && apt -y install gcc
 
-COPY /mCpricer usr/src/mCpricer
-WORKDIR /usr/src/mCpricer
+WORKDIR /mCpricer
 
 RUN make debug \
 && ./main
