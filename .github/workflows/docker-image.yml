@@ -17,7 +17,7 @@ jobs:
       uses: actions/checkout@v3
 
     - name: Pull Docker image from Docker Hub
-      run: docker pull mpk31415/ubuntu-clang
+      run: docker pull mpk31415/ubuntu-clang-amd
     
     - name: Compile and run tests
       run: docker run mpk31415/ubuntu-clang /bin/bash -c "./run_tests.sh"
