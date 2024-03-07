@@ -20,4 +20,4 @@ jobs:
       run: docker pull mpk31415/ubuntu-clang-amd
     
     - name: Compile and run tests
-      run: docker run mpk31415/ubuntu-clang-amd /bin/bash -c "./run_tests.sh"
+      run: docker run mpk31415/ubuntu-clang-amd /bin/bash -c ./run_tests.sh
