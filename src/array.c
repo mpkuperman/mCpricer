@@ -22,7 +22,7 @@ void array_init(Array *a, size_t size){
 }
 
 void array_add(Array *a, double element){
-    if (a->used == a->cap) {
+    if (a->used == a->cap){
         if (a->cap == 0){
             a->cap = 1;
         }
@@ -43,6 +43,16 @@ void array_add(Array *a, double element){
     }
     a->data[a->used] = element;
     a->used++;
+}
+
+void array_insert(Array *a, double element, size_t i){
+    if (i > a->cap){
+        printf("Out of bounds error. Unable to insert element to array.");
+        array_free(a);
+        exit(0);
+    }
+
+    a->data[i] = element;
 }
 
 void array_free(Array *a){
@@ -188,6 +198,33 @@ void test_array_free(){
     assert(a.data == NULL);
     assert(a.used == 0);
     assert(a.cap == 0);
+
+}
+
+void test_array_insert(){
+    Array a;
+    
+    size_t N = 2;
+
+    double value1 = 112.0; 
+    double value2 = 120.0; 
+    double value3 = 120.0; 
+
+    array_init(&a, N);
+    
+    array_add(&a, value1);
+    array_insert(&a, value2, 0);
+    assert(a.data[0] == value2);
+
+    array_add(&a, value1);
+    array_insert(&a, value3, 1);
+    assert(a.data[1] == value3);
+
+    array_add(&a, value3);
+    array_insert(&a, value1, 2);
+    assert(a.data[2] == value1);
+
+    array_free(&a);
 
 }
 
