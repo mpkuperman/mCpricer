@@ -16,8 +16,8 @@ jobs:
     - name: Checkout repository 
       uses: actions/checkout@v3
 
-    - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
+    - name: Pull Docker image from Docker Hub
+      run: docker pull mpk31415/ubuntu-clang-amd
     
     - name: Compile and run tests
-      run: docker run /bin/bash -c "run_tests.sh"
+      run: make debug && ./main
