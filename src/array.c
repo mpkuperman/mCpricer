@@ -55,6 +55,26 @@ void array_insert(Array *a, double element, size_t i){
     a->data[i] = element;
 }
 
+void array_concatenate(Array *a, Array *b){
+    a->cap = a->cap + b->cap;
+    double *ptr = realloc(a->data, a->cap * sizeof(double));
+
+    if (ptr == NULL){
+        printf("Unable to concatenate array.");
+        free(ptr);
+        exit(0);
+    }
+    else {
+        a->data = ptr;
+    }
+
+    size_t a_cap_old = a->cap - b->cap + 1; 
+    for (size_t i = 0; i < b->used; i++){
+        a->data[a_cap_old + i] = b->data[i];
+        a->used++;
+    }
+}
+
 void array_free(Array *a){
     free(a->data);
     a->data = NULL;
@@ -225,6 +245,41 @@ void test_array_insert(){
     assert(a.data[2] == value1);
 
     array_free(&a);
+
+}
+
+void test_array_concatenate(){
+    Array a;
+    Array b;
+    
+    size_t N = 2;
+    size_t M = 3;
+
+    double value1 = 112.0; 
+    double value2 = 120.0; 
+    double value3 = 120.0; 
+
+    array_init(&a, N);
+    array_init(&b, M);
+    
+    array_add(&a, value1);
+    array_add(&a, value2);
+    
+    array_add(&b, value1);
+    array_add(&b, value2);
+    array_add(&b, value3);
+    
+    array_concatenate(&a, &b);
+
+    assert(a.data[0] == value1);
+    assert(a.data[1] == value2);
+
+    assert(a.data[3] == value1);
+    assert(a.data[4] == value2);
+    assert(a.data[5] == value3);
+
+    array_free(&a);
+    array_free(&b);
 
 }
 
